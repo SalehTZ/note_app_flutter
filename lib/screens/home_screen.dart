@@ -28,11 +28,17 @@ class Home extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: _size!.width * 0.03),
         child: NotesScreen(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('button pressed');
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: SizedBox(
+        width: _size!.width * 0.15,
+        height: _size!.width * 0.15,
+        child: FittedBox(
+          child: FloatingActionButton(
+            onPressed: () {
+              print('button pressed');
+            },
+            child: const Icon(Icons.add, size: 30),
+          ),
+        ),
       ),
     );
   }
