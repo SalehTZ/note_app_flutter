@@ -16,10 +16,12 @@ Map<int, Color> appThemeColors = {
   900: const Color.fromRGBO(136, 14, 79, 1),
 };
 
-Map<String, int> noteColors = {
-  "yellowy": 0xFFFEC260,
-  "pinky": 0xffE9A6A6,
-  "bluey": 0xff6E85B2,
-  "greeny": 0xff4E9F3D,
-  "purpely": 0xff4C0070,
-};
+List<int> noteColors = [
+  0xFFFEC260, //
+  0xFFE9A6A6, //
+  0xFFF38EB0, //
+  0xFF519872, //
+  0xFFFFAB91, //
+  0xFFE6EE9B, //
+  0xFFCF93D9, //
+];
