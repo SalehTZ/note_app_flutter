@@ -17,8 +17,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Note App',
       theme: ThemeData(
-        primarySwatch: themeColor,
-      ),
+          primarySwatch: themeColor,
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: Colors.amber,
+            selectionColor: Colors.amber.withOpacity(0.3),
+            selectionHandleColor: Colors.amber,
+          )),
       home: Home(),
     );
   }
