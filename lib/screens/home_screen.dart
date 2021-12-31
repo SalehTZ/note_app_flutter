@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:note_app/components/colors.dart';
+import 'package:note_app/screens/new_note_screen.dart';
 
 import 'notes_screen.dart';
 
@@ -33,9 +34,11 @@ class Home extends StatelessWidget {
         height: _size!.width * 0.15,
         child: FittedBox(
           child: FloatingActionButton(
-            onPressed: () {
-              print('button pressed');
-            },
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewNoteScreen(),
+                )),
             child: const Icon(Icons.add, size: 30),
           ),
         ),
