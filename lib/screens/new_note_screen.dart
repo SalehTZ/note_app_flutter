@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:note_app/components/colors.dart';
-import 'package:note_app/database/notes_database_helper.dart';
+import 'package:note_app/model/notes_model.dart';
 
 class NewNoteScreen extends StatelessWidget {
   NewNoteScreen({Key? key}) : super(key: key);
@@ -9,12 +10,10 @@ class NewNoteScreen extends StatelessWidget {
   Size? _size;
   final TextEditingController noteTextController = TextEditingController();
   final TextEditingController titleTextController = TextEditingController();
-  late DbHelper? dbHelper;
 
   @override
   Widget build(BuildContext context) {
     _size = MediaQuery.of(context).size;
-    dbHelper = DbHelper.instance;
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(greyColor),
@@ -75,15 +74,19 @@ class NewNoteScreen extends StatelessWidget {
                   date.minute.toString() +
                   ':' +
                   date.second.toString();
-              Map<String, dynamic> row = {
-                'title': titleTextController.text.toString(),
-                'text': noteTextController.text.toString(),
-                'date': dateS,
-                'color': 1,
-              };
+              // Map<String, dynamic> row = {
+              //   'title': titleTextController.text.toString(),
+              //   'text': noteTextController.text.toString(),
+              //   'date': dateS,
+              //   'color': 1,
+              // };
+              final title = titleTextController.text.toString();
+              final text = noteTextController.text.toString();
+              const color = 1;
 
-              final id = await dbHelper!.insert(row);
-              print('note inserted to $id in database');
+              Hive.box<Note>('notes').add(
+                Note(title: title, text: text, date: dateS, color: color),
+              );
               Navigator.pop(context);
             },
             child: Container(
