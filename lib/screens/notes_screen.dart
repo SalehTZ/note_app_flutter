@@ -42,9 +42,9 @@ class _NotesScreenState extends State<NotesScreen> {
                       builder: (context) => ShowNoteScreen(noteIndex: index)),
                 ),
                 child: GridTile(
-                  key: _globalKey,
+                  // key: _globalKey,
                   child: NotesTile(
-                      key: _globalKey,
+                      // key: _globalKey,
                       size: _size,
                       noteTitle: note!.title,
                       noteDate: note.date,

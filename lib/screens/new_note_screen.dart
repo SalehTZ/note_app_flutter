@@ -4,12 +4,21 @@ import 'package:hive/hive.dart';
 import 'package:note_app/components/colors.dart';
 import 'package:note_app/model/notes_model.dart';
 
-class NewNoteScreen extends StatelessWidget {
+class NewNoteScreen extends StatefulWidget {
   NewNoteScreen({Key? key}) : super(key: key);
 
+  @override
+  State<NewNoteScreen> createState() => _NewNoteScreenState();
+}
+
+class _NewNoteScreenState extends State<NewNoteScreen> {
   Size? _size;
+
   final TextEditingController noteTextController = TextEditingController();
+
   final TextEditingController titleTextController = TextEditingController();
+
+  int _noteColor = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +37,39 @@ class NewNoteScreen extends StatelessWidget {
                 titleTextFormField(titleTextController),
                 //! note text textField
                 noteTextFormField(noteTextController),
+
+                SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: noteColors.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          //! select note color
+                          _noteColor = index;
+                          setState(() {});
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: _noteColor == index
+                                    ? Border.all(
+                                        color: Colors.white,
+                                        width: _size!.width * 0.01)
+                                    : null,
+                                color: Color(noteColors[index]),
+                                shape: BoxShape.circle),
+                            width: 25,
+                            height: 25,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
@@ -61,33 +103,36 @@ class NewNoteScreen extends StatelessWidget {
               vertical: _size!.width * 0.04, horizontal: _size!.width * 0.06),
           child: GestureDetector(
             onTap: () async {
-              //! save note to db
-              final date = DateTime.now();
-              String dateS = date.year.toString() +
-                  '-' +
-                  date.month.toString() +
-                  '-' +
-                  date.day.toString() +
-                  ' ' +
-                  date.hour.toString() +
-                  ':' +
-                  date.minute.toString() +
-                  ':' +
-                  date.second.toString();
-              // Map<String, dynamic> row = {
-              //   'title': titleTextController.text.toString(),
-              //   'text': noteTextController.text.toString(),
-              //   'date': dateS,
-              //   'color': 1,
-              // };
-              final title = titleTextController.text.toString();
-              final text = noteTextController.text.toString();
-              const color = 1;
+              if (titleTextController.text.isNotEmpty) {
+                //! save note to db
+                final date = DateTime.now();
+                String dateS = date.year.toString() +
+                    '-' +
+                    date.month.toString() +
+                    '-' +
+                    date.day.toString() +
+                    ' ' +
+                    date.hour.toString() +
+                    ':' +
+                    date.minute.toString() +
+                    ':' +
+                    date.second.toString();
+                //!!=============================================//
+                final title = titleTextController.text.toString();
+                final text = noteTextController.text.toString();
 
-              Hive.box<Note>('notes').add(
-                Note(title: title, text: text, date: dateS, color: color),
-              );
-              Navigator.pop(context);
+                Hive.box<Note>('notes').add(
+                  Note(
+                      title: title, text: text, date: dateS, color: _noteColor),
+                );
+                Navigator.pop(context);
+              } else {
+                SnackBar snackBar = SnackBar(
+                  content: Text('Title is empty!',
+                      style: TextStyle(fontSize: _size!.width * 0.04)),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
             },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: _size!.width * 0.03),
