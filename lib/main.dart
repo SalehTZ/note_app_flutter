@@ -29,12 +29,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Note App',
       theme: ThemeData(
-          primarySwatch: themeColor,
-          textSelectionTheme: TextSelectionThemeData(
-            cursorColor: Colors.amber,
-            selectionColor: Colors.amber.withOpacity(0.3),
-            selectionHandleColor: Colors.amber,
-          )),
+        primarySwatch: themeColor,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.orange.shade600,
+        ),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: Colors.orange.shade600,
+          selectionColor: Colors.orange.withOpacity(0.3),
+          selectionHandleColor: Colors.orange.shade600,
+        ),
+      ),
       home: Home(),
     );
   }
