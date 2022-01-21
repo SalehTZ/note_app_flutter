@@ -20,7 +20,7 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     _size = MediaQuery.of(context).size;
 
-    final _globalKey = GlobalKey<_NotesScreenState>();
+    // final _globalKey = GlobalKey<_NotesScreenState>();
 
     return ValueListenableBuilder(
       valueListenable: Hive.box<Note>('notes').listenable(),
@@ -42,13 +42,12 @@ class _NotesScreenState extends State<NotesScreen> {
                       builder: (context) => ShowNoteScreen(noteIndex: index)),
                 ),
                 child: GridTile(
-                  // key: _globalKey,
                   child: NotesTile(
-                      // key: _globalKey,
-                      size: _size,
-                      noteTitle: note!.title,
-                      noteDate: note.date,
-                      noteColor: noteColors[note.color]),
+                    size: _size,
+                    noteTitle: note!.title,
+                    noteDate: note.date,
+                    noteColor: noteColors[note.color],
+                  ),
                 ),
               );
             },
