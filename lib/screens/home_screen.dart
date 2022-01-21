@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        toolbarHeight: 100.0,
+        toolbarHeight: _size!.width * 0.3,
         title: Text(
           "Notes",
           style: GoogleFonts.inter(fontSize: 35),
