@@ -120,8 +120,10 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                 //!!=============================================//
                 final title = titleTextController.text.toString();
                 final text = noteTextController.text.toString();
-
-                Hive.box<Note>('notes').add(
+                int key = Hive.box<Note>('notes').length;
+                print(key.toString());
+                Hive.box<Note>('notes').put(
+                  key + 1,
                   Note(
                       title: title, text: text, date: dateS, color: _noteColor),
                 );
