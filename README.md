@@ -15,5 +15,5 @@ A Note App project with Flutter.
 ## New Note Screen:
 ![screenshot 3](/screenshot/new_note1_resized.jpg) ![screenshot 4](/screenshot/new_note_resized.jpg)
   
-## New Note Screen:
+## Show Note Screen:
 ![screenshot 5](/screenshot/show_note_screen_resized.jpg)
