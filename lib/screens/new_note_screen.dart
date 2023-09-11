@@ -113,7 +113,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                 final title = titleTextController.text.toString();
                 final text = noteTextController.text.toString();
                 int key = Hive.box<Note>('notes').length;
-                print(key.toString());
+                debugPrint(key.toString());
                 Hive.box<Note>('notes').put(
                   key + 1,
                   Note(

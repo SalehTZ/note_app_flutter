@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
             onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => NewNoteScreen(),
+                  builder: (context) => const NewNoteScreen(),
                 )),
             child: const Icon(Icons.add, size: 30),
           ),
