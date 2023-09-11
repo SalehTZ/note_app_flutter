@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
-import 'package:note_app/components/colors.dart';
-import 'package:note_app/model/notes_model.dart';
+
+import '../components/colors.dart';
+import '../model/notes_model.dart';
 
 class NewNoteScreen extends StatefulWidget {
-  NewNoteScreen({Key? key}) : super(key: key);
+  const NewNoteScreen({Key? key}) : super(key: key);
 
   @override
   State<NewNoteScreen> createState() => _NewNoteScreenState();
@@ -106,17 +107,8 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
               if (titleTextController.text.isNotEmpty) {
                 //! save note to db
                 final date = DateTime.now();
-                String dateS = date.year.toString() +
-                    '-' +
-                    date.month.toString() +
-                    '-' +
-                    date.day.toString() +
-                    ' ' +
-                    date.hour.toString() +
-                    ':' +
-                    date.minute.toString() +
-                    ':' +
-                    date.second.toString();
+                String dateS =
+                    '${date.year}-${date.month}-${date.day} ${date.hour}:${date.minute}:${date.second}';
                 //!!=============================================//
                 final title = titleTextController.text.toString();
                 final text = noteTextController.text.toString();

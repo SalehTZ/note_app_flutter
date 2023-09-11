@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           selectionHandleColor: Colors.orange.shade600,
         ),
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }

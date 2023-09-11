@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:note_app/components/colors.dart';
-import 'package:note_app/model/notes_model.dart';
-import 'package:note_app/screens/show_notes_screen.dart';
+
+import '../components/colors.dart';
+import '../model/notes_model.dart';
+import 'show_notes_screen.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({Key? key}) : super(key: key);
 
   @override
-  _NotesScreenState createState() => _NotesScreenState();
+  State<NotesScreen> createState() => _NotesScreenState();
 }
 
 class _NotesScreenState extends State<NotesScreen> {

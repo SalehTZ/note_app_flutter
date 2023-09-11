@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:note_app/components/colors.dart';
-import 'package:note_app/model/notes_model.dart';
+
+import '../components/colors.dart';
+import '../model/notes_model.dart';
 
 class EditNoteScreen extends StatefulWidget {
   const EditNoteScreen({Key? key, required this.noteIndex}) : super(key: key);
@@ -118,17 +119,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
               if (titleTextController.text.isNotEmpty) {
                 //! edit note in db
                 final date = DateTime.now();
-                String dateS = date.year.toString() +
-                    '-' +
-                    date.month.toString() +
-                    '-' +
-                    date.day.toString() +
-                    ' ' +
-                    date.hour.toString() +
-                    ':' +
-                    date.minute.toString() +
-                    ':' +
-                    date.second.toString();
+                String dateS =
+                    '${date.year}-${date.month}-${date.day} ${date.hour}:${date.minute}:${date.second}';
                 //!!=============================================//
                 final title = titleTextController.text.toString();
                 final text = noteTextController.text.toString();

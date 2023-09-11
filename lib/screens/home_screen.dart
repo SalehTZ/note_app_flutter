@@ -6,18 +6,16 @@ import 'package:note_app/screens/new_note_screen.dart';
 import 'notes_screen.dart';
 
 class Home extends StatelessWidget {
-  Home({Key? key}) : super(key: key);
-
-  Size? _size;
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    _size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        toolbarHeight: _size!.width * 0.3,
+        toolbarHeight: size.width * 0.3,
         title: Text(
           "Notes",
           style: GoogleFonts.inter(fontSize: 35),
@@ -25,13 +23,13 @@ class Home extends StatelessWidget {
         centerTitle: false,
       ),
       body: Container(
-        color: Color(greyColor),
-        padding: EdgeInsets.symmetric(horizontal: _size!.width * 0.03),
-        child: NotesScreen(),
+        color: const Color(greyColor),
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+        child: const NotesScreen(),
       ),
       floatingActionButton: SizedBox(
-        width: _size!.width * 0.15,
-        height: _size!.width * 0.15,
+        width: size.width * 0.15,
+        height: size.width * 0.15,
         child: FittedBox(
           child: FloatingActionButton(
             onPressed: () => Navigator.push(
