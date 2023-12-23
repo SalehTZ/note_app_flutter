@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Note App',
       theme: ThemeData(
+        useMaterial3: false,
         primarySwatch: themeColor,
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Colors.orange.shade600,
