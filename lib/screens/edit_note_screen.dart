@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../components/colors.dart';
+import '../constants/colors_manager.dart';
+import '../constants/styles_manager.dart';
 import '../model/notes_model.dart';
 
 class EditNoteScreen extends StatefulWidget {
@@ -38,7 +38,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(greyColor),
+        backgroundColor: ColorsManager.greyColor,
         appBar: buildAppBar(context),
         body: SingleChildScrollView(
           child: Padding(
@@ -56,7 +56,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemCount: noteColors.length,
+                    itemCount: ColorsManager.noteColors.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -73,7 +73,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                                         color: Colors.white,
                                         width: _size!.width * 0.01)
                                     : null,
-                                color: Color(noteColors[index]),
+                                color: ColorsManager.noteColors[index],
                                 shape: BoxShape.circle),
                             width: 25,
                             height: 25,
@@ -172,17 +172,13 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
       keyboardType: TextInputType.multiline,
       maxLines: null,
       textAlign: TextAlign.start,
-      style: GoogleFonts.habibi(
-        color: Colors.grey.shade400,
-        fontSize: noteFontSize,
-      ),
+      style: TextStyles.getRegularStyle(
+          color: Colors.grey.shade400, fontSize: noteFontSize),
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: 'Type something...',
-        hintStyle: GoogleFonts.habibi(
-          color: Colors.grey,
-          fontSize: noteFontSize,
-        ),
+        hintStyle: TextStyles.getRegularStyle(
+            color: Colors.grey, fontSize: noteFontSize),
       ),
     );
   }
@@ -193,17 +189,13 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
     return TextFormField(
       controller: titleTextController,
       cursorColor: Colors.amber,
-      style: GoogleFonts.habibi(
-        color: Colors.grey.shade400,
-        fontSize: titleFontSize,
-      ),
+      style: TextStyles.getRegularStyle(
+          color: Colors.grey.shade400, fontSize: titleFontSize),
       decoration: InputDecoration(
         hintText: 'Title',
         border: InputBorder.none,
-        hintStyle: GoogleFonts.habibi(
-          color: Colors.grey,
-          fontSize: titleFontSize,
-        ),
+        hintStyle: TextStyles.getRegularStyle(
+            color: Colors.grey, fontSize: titleFontSize),
       ),
     );
   }

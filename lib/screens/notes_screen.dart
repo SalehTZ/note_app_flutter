@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../components/colors.dart';
+import '../constants/colors_manager.dart';
+import '../constants/styles_manager.dart';
 import '../model/notes_model.dart';
 import 'show_notes_screen.dart';
 
@@ -46,7 +46,7 @@ class _NotesScreenState extends State<NotesScreen> {
                     size: _size,
                     noteTitle: note!.title,
                     noteDate: note.date,
-                    noteColor: noteColors[note.color],
+                    noteColor: ColorsManager.noteColors[note.color],
                   ),
                 ),
               );
@@ -71,7 +71,7 @@ class NotesTile extends StatelessWidget {
     required Size? size,
     required String? noteTitle,
     required String? noteDate,
-    required int? noteColor,
+    required Color? noteColor,
   })  : _size = size,
         _noteTitle = noteTitle,
         _noteDate = noteDate,
@@ -80,7 +80,7 @@ class NotesTile extends StatelessWidget {
 
   final Size? _size;
   final String? _noteTitle, _noteDate;
-  final int? _noteColor;
+  final Color? _noteColor;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class NotesTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(_size!.width * 0.025),
       child: Container(
         padding: EdgeInsets.all(_size!.width * 0.02),
-        color: Color(_noteColor!),
+        color: _noteColor!,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -97,9 +97,9 @@ class NotesTile extends StatelessWidget {
                 _noteTitle!,
                 overflow: TextOverflow.fade,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.raleway(
+                style: TextStyles.getRegularStyle(
                   fontSize: _size!.width * 0.1,
-                  color: const Color(greyColor),
+                  color: ColorsManager.greyColor,
                 ),
               ),
             ),
@@ -107,9 +107,10 @@ class NotesTile extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: Text(
                 _noteDate!,
-                style: GoogleFonts.inter(
-                    fontSize: _size!.width * 0.03,
-                    color: const Color(greyColor).withOpacity(0.5)),
+                style: TextStyles.getRegularStyle(
+                  fontSize: _size!.width * 0.03,
+                  color: ColorsManager.greyColor.withOpacity(0.5),
+                ),
               ),
             ),
           ],

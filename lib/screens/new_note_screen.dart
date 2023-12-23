@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 
-import '../components/colors.dart';
+import '../constants/colors_manager.dart';
+import '../constants/styles_manager.dart';
 import '../model/notes_model.dart';
 
 class NewNoteScreen extends StatefulWidget {
@@ -26,7 +26,6 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
     _size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(greyColor),
         appBar: buildAppBar(context),
         body: SingleChildScrollView(
           child: Padding(
@@ -44,7 +43,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemCount: noteColors.length,
+                    itemCount: ColorsManager.noteColors.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -61,7 +60,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                                         color: Colors.white,
                                         width: _size!.width * 0.01)
                                     : null,
-                                color: Color(noteColors[index]),
+                                color: ColorsManager.noteColors[index],
                                 shape: BoxShape.circle),
                             width: 25,
                             height: 25,
@@ -132,13 +131,12 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
               padding: EdgeInsets.symmetric(horizontal: _size!.width * 0.03),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(_size!.width * 0.03),
-                  color: Colors.grey.shade800),
+                  color: ColorsManager.grey.shade800),
               child: Row(
                 children: [
                   const Icon(Icons.save),
                   SizedBox(width: _size!.width * 0.01),
-                  const Text('Save',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Save', style: TextStyles.getBoldStyle()),
                 ],
               ),
             ),
@@ -155,15 +153,15 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
       keyboardType: TextInputType.multiline,
       maxLines: null,
       textAlign: TextAlign.start,
-      style: GoogleFonts.habibi(
-        color: Colors.grey.shade400,
+      style: TextStyles.getRegularStyle(
+        color: ColorsManager.grey.shade400,
         fontSize: noteFontSize,
       ),
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: 'Type something...',
-        hintStyle: GoogleFonts.habibi(
-          color: Colors.grey,
+        hintStyle: TextStyles.getRegularStyle(
+          color: ColorsManager.grey,
           fontSize: noteFontSize,
         ),
       ),
@@ -176,15 +174,15 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
     return TextFormField(
       controller: titleTextController,
       cursorColor: Colors.amber,
-      style: GoogleFonts.habibi(
-        color: Colors.grey.shade400,
+      style: TextStyles.getRegularStyle(
+        color: ColorsManager.grey.shade400,
         fontSize: titleFontSize,
       ),
       decoration: InputDecoration(
         hintText: 'Title',
         border: InputBorder.none,
-        hintStyle: GoogleFonts.habibi(
-          color: Colors.grey,
+        hintStyle: TextStyles.getRegularStyle(
+          color: ColorsManager.grey,
           fontSize: titleFontSize,
         ),
       ),

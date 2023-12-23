@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:note_app/components/colors.dart';
-import 'package:note_app/screens/new_note_screen.dart';
 
+import '../constants/colors_manager.dart';
+import '../constants/fonts_manager.dart';
+import '../constants/styles_manager.dart';
+import 'new_note_screen.dart';
 import 'notes_screen.dart';
 
 class Home extends StatelessWidget {
@@ -18,12 +19,12 @@ class Home extends StatelessWidget {
         toolbarHeight: size.width * 0.3,
         title: Text(
           "Notes",
-          style: GoogleFonts.inter(fontSize: 35),
+          style: TextStyles.getRegularStyle(fontSize: FontSize.s34),
         ),
         centerTitle: false,
       ),
       body: Container(
-        color: const Color(greyColor),
+        color: ColorsManager.greyColor,
         padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
         child: const NotesScreen(),
       ),

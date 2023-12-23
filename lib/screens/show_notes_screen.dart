@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../components/colors.dart';
+import '../constants/colors_manager.dart';
+import '../constants/styles_manager.dart';
 import '../model/notes_model.dart';
 import 'edit_note_screen.dart';
 
@@ -22,7 +22,6 @@ class ShowNoteScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: buildAppBar(context, noteIndex),
-        backgroundColor: const Color(greyColor),
         floatingActionButton: SizedBox(
           width: size.width * 0.25,
           height: size.width * 0.25,
@@ -52,10 +51,9 @@ class ShowNoteScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: size.width * 0.03),
                   child: Text(
                     Hive.box<Note>('notes').getAt(noteIndex)!.title,
-                    style: GoogleFonts.habibi(
-                      color: Colors.white.withAlpha(215),
-                      fontSize: titleFontSize,
-                    ),
+                    style: TextStyles.getRegularStyle(
+                        color: ColorsManager.whiteA215,
+                        fontSize: titleFontSize),
                   ),
                 ),
                 //! note text textField
@@ -63,10 +61,9 @@ class ShowNoteScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: size.width * 0.02),
                   child: Text(
                     Hive.box<Note>('notes').getAt(noteIndex)!.text,
-                    style: GoogleFonts.habibi(
-                      color: Colors.white.withAlpha(190),
-                      fontSize: noteFontSize,
-                    ),
+                    style: TextStyles.getRegularStyle(
+                        color: ColorsManager.white.withAlpha(190),
+                        fontSize: noteFontSize),
                   ),
                 ),
                 // noteTextFormField(noteTextController),
