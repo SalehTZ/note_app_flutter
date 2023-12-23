@@ -5,7 +5,6 @@ import 'colors_manager.dart';
 // * Some of styles are commented for now.
 // * Will be uncommented when decided on styles.
 // ! Just added some starter theme attributes. Change them later
-// TODO add theme attributes here
 ThemeData getApplicationTheme() {
   return ThemeData(
     // * Material 3
