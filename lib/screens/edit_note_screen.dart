@@ -93,6 +93,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
+      backgroundColor: ColorsManager.greyColor,
       toolbarHeight: _size!.width * 0.2,
       leadingWidth: _size!.width * 0.24,
       leading: Padding(

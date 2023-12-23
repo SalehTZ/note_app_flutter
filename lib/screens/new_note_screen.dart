@@ -82,6 +82,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
     return AppBar(
       toolbarHeight: _size!.width * 0.2,
       leadingWidth: _size!.width * 0.24,
+      backgroundColor: ColorsManager.greyColor,
       leading: Padding(
         padding: EdgeInsets.symmetric(
             vertical: _size!.width * 0.04, horizontal: _size!.width * 0.06),

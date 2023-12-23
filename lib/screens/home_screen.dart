@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorsManager.greyColor,
         elevation: 0,
         toolbarHeight: size.width * 0.3,
         title: Text(

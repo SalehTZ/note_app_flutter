@@ -81,6 +81,7 @@ class ShowNoteScreen extends StatelessWidget {
     return AppBar(
       toolbarHeight: size.width * 0.2,
       leadingWidth: size.width * 0.24,
+      backgroundColor: ColorsManager.greyColor,
       leading: Padding(
         padding: EdgeInsets.symmetric(
             vertical: size.width * 0.04, horizontal: size.width * 0.06),
